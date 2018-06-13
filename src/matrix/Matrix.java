@@ -7,9 +7,9 @@ public class Matrix {
     private final int n;
     private final int m;
 
-    private final List<List<Integer>> data;
+    private final List<List<Double>> data;
 
-    public Matrix(List<List<Integer>> data) {
+    public Matrix(List<List<Double>> data) {
         this.data = data;
 
         n = data.size();
@@ -22,7 +22,7 @@ public class Matrix {
             throw new IllegalArgumentException("Empty matrix");
         }
 
-        for (List<Integer> row : data) {
+        for (List<Double> row : data) {
             if (row.size() != m) {
                 throw new IllegalArgumentException("Rows lengths not equal");
             }
@@ -37,7 +37,7 @@ public class Matrix {
         return m;
     }
 
-    public int get(int i, int j) {
+    public double get(int i, int j) {
         if (i < 0 || j < 0 || i >= n || j >= m) {
             throw new IndexOutOfBoundsException();
         }
@@ -49,9 +49,9 @@ public class Matrix {
             throw new IllegalArgumentException("Invalid matrix size");
         }
 
-        List<List<Integer>> newData = new ArrayList<>();
+        List<List<Double>> newData = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            List<Integer> newRow = new ArrayList<>();
+            List<Double> newRow = new ArrayList<>();
             for (int j = 0; j < m; j++) {
                 newRow.add(data.get(i).get(j) + other.data.get(i).get(j));
             }
@@ -62,10 +62,10 @@ public class Matrix {
     }
 
     public Matrix multiply(int a) {
-        List<List<Integer>> newData = new ArrayList<>();
-        for (List<Integer> row : data) {
-            List<Integer> newRow = new ArrayList<>();
-            for (int rowItem : row) {
+        List<List<Double>> newData = new ArrayList<>();
+        for (List<Double> row : data) {
+            List<Double> newRow = new ArrayList<>();
+            for (double rowItem : row) {
                 newRow.add(rowItem * a);
             }
             newData.add(newRow);
@@ -79,11 +79,11 @@ public class Matrix {
             throw new IllegalArgumentException("Invalid matrix size");
         }
 
-        List<List<Integer>> newData = new ArrayList<>();
+        List<List<Double>> newData = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            List<Integer> newRow = new ArrayList<>();
+            List<Double> newRow = new ArrayList<>();
             for (int j = 0; j < other.m; j++) {
-                int newValue = 0;
+                double newValue = 0;
                 for (int k = 0; k < m; k++) {
                     newValue += data.get(i).get(k) * other.data.get(k).get(j);
                 }

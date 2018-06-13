@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MatrixSerializerService {
     public static Matrix readMatrix(Scanner scanner) {
-        List<List<Integer>> data = new ArrayList<>();
+        List<List<Double>> data = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -15,9 +15,9 @@ public class MatrixSerializerService {
                 break;
             }
             String[] lineItems = line.split(" ");
-            List<Integer> row = new ArrayList<>();
+            List<Double> row = new ArrayList<>();
             for (String item : lineItems) {
-                row.add(Integer.parseInt(item));
+                row.add(Double.parseDouble(item));
             }
             data.add(row);
         }
