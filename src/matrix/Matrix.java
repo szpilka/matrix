@@ -100,6 +100,6 @@ public class Matrix {
             throw new UnsupportedOperationException("Cannot inverse matrix when n is not equal to m");
         }
 
-        return this;
+        return MatrixInversionService.inverseMatrix(this);
     }
 }
